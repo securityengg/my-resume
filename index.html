@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANALYST PROFILE // FURMAN KHAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #050a0f;
+    --bg-secondary: #0a1520;
+    --bg-panel: #0d1e2e;
+    --accent-cyan: #00d4ff;
+    --accent-green: #00ff9d;
+    --accent-orange: #ff6b35;
+    --accent-red: #ff3366;
+    --accent-yellow: #ffd700;
+    --text-primary: #e0f4ff;
+    --text-secondary: #7ab8d4;
+    --text-dim: #3a6a82;
+    --border: #1a3a52;
+    --border-bright: #0a5a82;
+    --glow-cyan: 0 0 20px rgba(0,212,255,0.3);
+    --glow-green: 0 0 20px rgba(0,255,157,0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-bright);
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,212,255,0.1);
+  }
+
+  .topbar-left { display: flex; align-items: center; gap: 20px; }
+
+  .logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--accent-cyan);
+    letter-spacing: 3px;
+    text-shadow: var(--glow-cyan);
+  }
+
+  .status-pill {
+    background: rgba(0,255,157,0.1);
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 2px 10px;
+    border-radius: 2px;
+    letter-spacing: 2px;
+    animation: pulse-green 2s infinite;
+  }
+
+  @keyframes pulse-green {
+    0%,100% { box-shadow: 0 0 6px rgba(0,255,157,0.3); }
+    50% { box-shadow: 0 0 14px rgba(0,255,157,0.7); }
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .live-time { color: var(--accent-cyan); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 270px 1fr;
+    gap: 14px;
+  }
+
+  /* PANELS */
+  .panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+    opacity: 0.5;
+  }
+
+  .panel-header {
+    background: rgba(0,212,255,0.04);
+    border-bottom: 1px solid var(--border);
+    padding: 7px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .panel-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-cyan);
+    letter-spacing: 3px;
+  }
+
+  .panel-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  .panel-body { padding: 12px 14px; }
+
+  /* SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 12px; }
+
+  .profile-section { text-align: center; padding: 18px 14px 14px; }
+
+  .avatar-ring {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, transparent 70%);
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%,100% { box-shadow: var(--glow-cyan); }
+    50% { box-shadow: 0 0 30px rgba(0,212,255,0.55); }
+  }
+
+  .avatar-initials {
+    font-family: 'Orbitron', monospace;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--accent-cyan);
+    text-shadow: var(--glow-cyan);
+  }
+
+  .analyst-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .analyst-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-green);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .clearance-badge {
+    display: inline-block;
+    background: rgba(255,107,53,0.1);
+    border: 1px solid var(--accent-orange);
+    color: var(--accent-orange);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    padding: 3px 12px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(26,58,82,0.5);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-align: left;
+    word-break: break-all;
+  }
+
+  .contact-item:last-child { border-bottom: none; }
+  .contact-icon { color: var(--accent-cyan); width: 14px; text-align: center; flex-shrink: 0; }
+
+  /* SKILLS */
+  .skill-item { margin-bottom: 9px; }
+
+  .skill-header { display: flex; justify-content: space-between; margin-bottom: 3px; }
+
+  .skill-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+  }
+
+  .skill-pct {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-cyan);
+  }
+
+  .skill-bar-bg { height: 4px; background: rgba(26,58,82,0.8); }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+    box-shadow: 0 0 8px rgba(0,212,255,0.4);
+    width: 0%;
+    animation: bar-grow 1.6s ease forwards;
+  }
+
+  @keyframes bar-grow {
+    to { width: var(--w); }
+  }
+
+  /* CERTS */
+  .cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    background: rgba(0,212,255,0.04);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-left: 3px solid var(--accent-cyan);
+    margin-bottom: 7px;
+  }
+
+  .cert-code {
+    font-family: 'Orbitron', monospace;
+    font-size: 9px;
+    color: var(--accent-cyan);
+    font-weight: 700;
+    min-width: 55px;
+    text-align: center;
+  }
+
+  .cert-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .cert-year {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+  }
+
+  /* SUMMARY BOX */
+  .summary-box {
+    border-left: 3px solid var(--accent-cyan);
+    padding: 10px 14px;
+    background: rgba(0,212,255,0.03);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* STAT CARDS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .stat-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--ac, var(--accent-cyan));
+    opacity: 0.7;
+  }
+
+  .stat-label { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--text-dim); letter-spacing: 2px; margin-bottom: 5px; }
+  .stat-value { font-family: 'Orbitron', monospace; font-size: 26px; font-weight: 900; color: var(--ac, var(--accent-cyan)); text-shadow: 0 0 18px var(--ac, var(--accent-cyan)); line-height: 1; margin-bottom: 3px; }
+  .stat-sub { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--text-dim); }
+  .stat-delta { position: absolute; top: 10px; right: 10px; font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--accent-green); }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 22px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--accent-cyan), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 18px;
+    animation: fadeUp 0.5s ease forwards;
+    opacity: 0;
+  }
+
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.25s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -19px; top: 5px;
+    width: 8px; height: 8px;
+    border: 2px solid var(--accent-cyan);
+    background: var(--bg-primary);
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px rgba(0,212,255,0.6);
+  }
+
+  .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; flex-wrap: wrap; gap: 4px; }
+
+  .job-title { font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-primary); letter-spacing: 1px; }
+
+  .job-period {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-yellow);
+    background: rgba(255,215,0,0.08);
+    border: 1px solid rgba(255,215,0,0.2);
+    padding: 2px 8px;
+  }
+
+  .job-company { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--accent-cyan); margin-bottom: 7px; letter-spacing: 1px; }
+
+  .job-bullets { list-style: none; }
+
+  .job-bullets li {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 2px 0 2px 16px;
+    position: relative;
+    font-weight: 500;
+  }
+
+  .job-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--accent-green); font-size: 10px; top: 4px; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+
+  .tech-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0,212,255,0.25);
+    padding: 2px 7px;
+    background: rgba(0,212,255,0.05);
+    letter-spacing: 1px;
+  }
+
+  /* ALERT FEED */
+  .alert-feed { max-height: 210px; overflow-y: auto; }
+  .alert-feed::-webkit-scrollbar { width: 4px; }
+  .alert-feed::-webkit-scrollbar-thumb { background: var(--border-bright); }
+
+  .alert-header-row, .alert-row {
+    display: grid;
+    grid-template-columns: 60px 85px 1fr 95px;
+    gap: 8px;
+    padding: 6px 10px;
+    border-bottom: 1px solid rgba(26,58,82,0.4);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    align-items: center;
+  }
+
+  .alert-header-row { color: var(--text-dim); letter-spacing: 2px; border-bottom: 1px solid var(--border-bright); font-size: 9px; }
+  .alert-row:hover { background: rgba(0,212,255,0.04); }
+
+  .sev-critical { color: var(--accent-red); }
+  .sev-high { color: var(--accent-orange); }
+  .sev-medium { color: var(--accent-yellow); }
+  .sev-low { color: var(--accent-green); }
+
+  .alert-desc { color: var(--text-primary); }
+  .alert-type { color: var(--text-secondary); }
+  .alert-status { text-align: right; color: var(--accent-green); }
+  .alert-time { color: var(--text-dim); }
+
+  /* BOTTOM ROW */
+  .bottom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .edu-item {
+    display: flex;
+    gap: 12px;
+    padding: 9px 10px;
+    background: rgba(0,212,255,0.03);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent-yellow);
+    margin-bottom: 8px;
+  }
+
+  .edu-year { font-family: 'Orbitron', monospace; font-size: 10px; color: var(--accent-yellow); font-weight: 700; min-width: 45px; padding-top: 2px; }
+  .edu-degree { font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700; color: var(--text-primary); }
+  .edu-school { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--text-secondary); margin-top: 2px; }
+
+  /* DOMAIN METERS */
+  .threat-meter { display: flex; align-items: center; gap: 10px; padding: 7px 0; }
+  .threat-label { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-dim); min-width: 105px; letter-spacing: 1px; }
+  .threat-bar-bg { flex: 1; height: 5px; background: rgba(26,58,82,0.8); }
+  .threat-bar-fill { height: 100%; }
+  .threat-val { font-family: 'Share Tech Mono', monospace; font-size: 10px; min-width: 28px; text-align: right; }
+
+  /* CURSOR */
+  .cursor { display: inline-block; width: 7px; height: 12px; background: var(--accent-cyan); margin-left: 2px; animation: blink 1s step-end infinite; vertical-align: middle; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* MAIN CONTENT */
+  .main-content { display: flex; flex-direction: column; gap: 12px; }
+
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 8px 0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">SOC // ANALYST PROFILE</div>
+    <div class="status-pill">● ACTIVE SESSION</div>
+  </div>
+  <div class="topbar-right">
+    <span>NODE: SEC-WKS-07</span>
+    <span>|</span>
+    <span>ANALYST-ID: FK-7734</span>
+    <span>|</span>
+    <span class="live-time" id="liveClock">--:--:-- UTC</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ===== SIDEBAR ===== -->
+  <div class="sidebar">
+
+    <!-- Profile -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">ANALYST PROFILE</span>
+        <span class="panel-tag">ID#FK-001</span>
+      </div>
+      <div class="profile-section">
+        <div class="avatar-ring"><span class="avatar-initials">FK</span></div>
+        <div class="analyst-name">FURMAN KHAN</div>
+        <div class="analyst-title">SR. CYBER SECURITY ANALYST</div>
+        <div class="clearance-badge">TIER III ANALYST</div>
+        <div style="text-align:left;">
+          <div class="contact-item"><span class="contact-icon">✉</span><span>Khan.Furman@gmail.com</span></div>
+          <div class="contact-item"><span class="contact-icon">📞</span><span>+91 97594 00047</span></div>
+          <div class="contact-item"><span class="contact-icon">📍</span><span>New Delhi, IN</span></div>
+          <div class="contact-item"><span class="contact-icon">🔗</span><span>linkedin.com/in/furmankhan</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capability Index -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">CAPABILITY INDEX</span>
+        <span class="panel-tag">ASSESSED</span>
+      </div>
+      <div class="panel-body">
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">MICROSOFT SENTINEL / KQL</span><span class="skill-pct">97%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:97%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">INCIDENT RESPONSE</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">SIEM (SPLUNK / QRADAR)</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">CLOUD SEC (AZURE/DEFENDER)</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">VULNERABILITY MGMT</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">DLP & ENDPOINT (EDR)</span><span class="skill-pct">87%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:87%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">MALWARE ANALYSIS</span><span class="skill-pct">82%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">SCRIPTING (PY/BASH/KQL)</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:80%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">CERTIFICATIONS</span>
+        <span class="panel-tag">VERIFIED</span>
+      </div>
+      <div class="panel-body">
+        <div class="cert-badge">
+          <div class="cert-code">SEC+</div>
+          <div>
+            <div class="cert-name">CompTIA Security+</div>
+            <div class="cert-year">COMPTIA ACCREDITED</div>
+          </div>
+        </div>
+        <div class="cert-badge">
+          <div class="cert-code">AZ-900</div>
+          <div>
+            <div class="cert-name">Azure Fundamentals</div>
+            <div class="cert-year">MICROSOFT CERTIFIED</div>
+          </div>
+        </div>
+        <div class="cert-badge" style="border-left-color:var(--accent-yellow);">
+          <div class="cert-code" style="color:var(--accent-yellow)">HOF</div>
+          <div>
+            <div class="cert-name">Microsoft Hall of Fame</div>
+            <div class="cert-year">MICROSOFT RECOGNISED</div>
+          </div>
+        </div>
+        <div class="cert-badge" style="border-left-color:var(--accent-orange);">
+          <div class="cert-code" style="color:var(--accent-orange)">BBH</div>
+          <div>
+            <div class="cert-name">Bug Bounty Hunting</div>
+            <div class="cert-year">UDEMY CERTIFIED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+
+    <!-- Professional Summary -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">MISSION BRIEF // PROFESSIONAL SUMMARY</span>
+        <span class="panel-tag">ACTIVE <span class="cursor"></span></span>
+      </div>
+      <div class="panel-body">
+        <div class="summary-box">
+          Strategic Senior Cyber Security Analyst with <strong style="color:var(--accent-cyan)">4+ years</strong> of experience across Government and Corporate sectors. Expert in managing complex security stacks, specialising in <strong style="color:var(--accent-cyan)">Microsoft Sentinel (KQL)</strong>, cloud-native vulnerability management, and automated incident response. Proven track record of enhancing SOC efficiency through custom dashboarding, deep-dive malware analysis, and development of robust security playbooks.
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="stats-row">
+      <div class="stat-card" style="--ac:#00d4ff">
+        <div class="stat-label">YEARS ACTIVE</div>
+        <div class="stat-value">04+</div>
+        <div class="stat-sub">GOV + CORP SECTORS</div>
+        <div class="stat-delta">↑ SENIOR</div>
+      </div>
+      <div class="stat-card" style="--ac:#00ff9d">
+        <div class="stat-label">SIEM EXPERTISE</div>
+        <div class="stat-value">KQL</div>
+        <div class="stat-sub">SENTINEL EXPERT</div>
+        <div class="stat-delta" style="color:var(--accent-green)">+ SPL</div>
+      </div>
+      <div class="stat-card" style="--ac:#ffd700">
+        <div class="stat-label">TOOLS MASTERED</div>
+        <div class="stat-value">15+</div>
+        <div class="stat-sub">SECURITY PLATFORMS</div>
+        <div class="stat-delta" style="color:var(--accent-yellow)">MULTI-STACK</div>
+      </div>
+      <div class="stat-card" style="--ac:#ff6b35">
+        <div class="stat-label">RECOGNITION</div>
+        <div class="stat-value">HOF</div>
+        <div class="stat-sub">MICROSOFT HALL OF FAME</div>
+        <div class="stat-delta" style="color:var(--accent-orange)">ELITE</div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">OPERATIONAL HISTORY</span>
+        <span class="panel-tag">EMPLOYMENT LOG // 4Y+</span>
+      </div>
+      <div class="panel-body">
+        <div class="timeline">
+
+          <!-- Egon Zehnder -->
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div class="job-header">
+              <div class="job-title">Senior Cyber Security Analyst</div>
+              <div class="job-period">SEP 2022 — PRESENT</div>
+            </div>
+            <div class="job-company">▶ EGON ZEHNDER // NEW DELHI, IN</div>
+            <ul class="job-bullets">
+              <li>Engineered complex KQL queries in Microsoft Sentinel to investigate security incidents and visualise real-time security posture via custom dashboards.</li>
+              <li>Monitored and responded to high-priority alerts using Microsoft Defender, ensuring rapid mitigation of multi-vector attacks.</li>
+              <li>Developed automated reporting scripts for sensitive data exfiltration, monitoring large data transfers and external email activity.</li>
+              <li>Configured Forcepoint Websense policies and Sophos execution rules to prevent data loss and block unauthorized third-party applications.</li>
+              <li>Designed NAC dashboards to identify security gaps, ensuring 100% deployment of EDR and DLP agents across the global environment.</li>
+              <li>Created specialised Tenable dashboards to track lifecycle of active and remediated vulnerabilities in cloud-native environments.</li>
+              <li>Established a secure sandbox environment for deep analysis of malicious attachments and URLs.</li>
+              <li>Authored comprehensive SOPs for the Incident Response Plan to standardise SOC functions.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tech-tag">MS SENTINEL</span>
+              <span class="tech-tag">KQL</span>
+              <span class="tech-tag">DEFENDER FOR CLOUD</span>
+              <span class="tech-tag">FORCEPOINT DLP</span>
+              <span class="tech-tag">TENABLE</span>
+              <span class="tech-tag">CROWDSTRIKE</span>
+              <span class="tech-tag">AKAMAI WAF</span>
+            </div>
+          </div>
+
+          <!-- TCS -->
+          <div class="timeline-item">
+            <div class="tl-dot" style="border-color:var(--accent-green)"></div>
+            <div class="job-header">
+              <div class="job-title">Asst. Application Interface Executive</div>
+              <div class="job-period">MAR 2021 — SEP 2022</div>
+            </div>
+            <div class="job-company">▶ TATA CONSULTANCY SERVICES (TCS) // IN</div>
+            <ul class="job-bullets">
+              <li>Monitored global client networks 24×7 to detect and mitigate hostile activity using SIEM, firewalls, and IPS across enterprise environments.</li>
+              <li>Conducted server hardening and reviewed security policies to minimise corporate attack surface.</li>
+              <li>Documented end-to-end incident lifecycles and provided leadership with status updates on critical threats.</li>
+              <li>Managed product-related vulnerabilities and implemented countermeasures to protect information system integrity.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tech-tag">SIEM</span>
+              <span class="tech-tag">IPS/IDS</span>
+              <span class="tech-tag">FORTIGATE</span>
+              <span class="tech-tag">NESSUS</span>
+              <span class="tech-tag">ZSCALER</span>
+              <span class="tech-tag">WIRESHARK</span>
+            </div>
+          </div>
+
+          <!-- Eracorp -->
+          <div class="timeline-item">
+            <div class="tl-dot" style="border-color:var(--accent-yellow)"></div>
+            <div class="job-header">
+              <div class="job-title">Associate Security Engineer</div>
+              <div class="job-period">FEB 2020 — APR 2020</div>
+            </div>
+            <div class="job-company">▶ ERACORP TECHNOLOGIES // IN</div>
+            <ul class="job-bullets">
+              <li>Performed vulnerability assessments on network systems and web applications using Burp Suite and OWASP ZAP.</li>
+              <li>Developed a custom reconnaissance script using Bash to automate initial target analysis for security audits, reducing manual effort significantly.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tech-tag">BURP SUITE</span>
+              <span class="tech-tag">OWASP ZAP</span>
+              <span class="tech-tag">KALI LINUX</span>
+              <span class="tech-tag">BASH</span>
+              <span class="tech-tag">METASPLOIT</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements as Alert Feed -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">KEY ACHIEVEMENTS // INCIDENT LOG</span>
+        <span class="panel-tag">RESOLVED <span class="cursor"></span></span>
+      </div>
+      <div class="alert-header-row">
+        <span>SEV</span><span>CATEGORY</span><span>DESCRIPTION</span><span style="text-align:right">OUTCOME</span>
+      </div>
+      <div class="alert-feed">
+        <div class="alert-row">
+          <span class="sev-critical">● CRIT</span>
+          <span class="alert-type">CLOUD SEC</span>
+          <span class="alert-desc">Achieved 100% global EDR + DLP agent deployment via NAC dashboard visibility</span>
+          <span class="alert-status">DEPLOYED</span>
+        </div>
+        <div class="alert-row">
+          <span class="sev-high">● HIGH</span>
+          <span class="alert-type">THREAT INTEL</span>
+          <span class="alert-desc">Custom KQL detections eliminated blind spots in multi-vector attack campaigns</span>
+          <span class="alert-status">CONTAINED</span>
+        </div>
+        <div class="alert-row">
+          <span class="sev-critical">● CRIT</span>
+          <span class="alert-type">DATA EXFIL</span>
+          <span class="alert-desc">Automated scripts flagged large-scale sensitive data transfers before breach</span>
+          <span class="alert-status">BLOCKED</span>
+        </div>
+        <div class="alert-row">
+          <span class="sev-high">● HIGH</span>
+          <span class="alert-type">MALWARE</span>
+          <span class="alert-desc">Sandbox environment enabled deep malware dissection — IOCs shared SOC-wide</span>
+          <span class="alert-status">ANALYSED</span>
+        </div>
+        <div class="alert-row">
+          <span class="sev-medium">● MED</span>
+          <span class="alert-type">PROCESS OPS</span>
+          <span class="alert-desc">Authored IR SOPs standardising SOC response across all incident categories</span>
+          <span class="alert-status">PUBLISHED</span>
+        </div>
+        <div class="alert-row">
+          <span class="sev-low">● INFO</span>
+          <span class="alert-type">RECOGNITION</span>
+          <span class="alert-desc">Inducted into Microsoft Hall of Fame for responsible security disclosure</span>
+          <span class="alert-status">AWARDED</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="bottom-row">
+
+      <!-- Education -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">EDUCATION</span>
+          <span class="panel-tag">ACADEMIC LOG</span>
+        </div>
+        <div class="panel-body">
+          <div class="edu-item">
+            <div class="edu-year">2017</div>
+            <div>
+              <div class="edu-degree">B.Tech — Electronics & Communication</div>
+              <div class="edu-school">GLOCAL UNIVERSITY, SAHARANPUR // 2013–2017</div>
+            </div>
+          </div>
+          <div class="edu-item" style="border-left-color:var(--accent-cyan)">
+            <div class="edu-year" style="color:var(--accent-cyan)">2013</div>
+            <div>
+              <div class="edu-degree">Higher Secondary Education</div>
+              <div class="edu-school">GOVT SR. SEC SCHOOL, PUNJAB (PSEB)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain Expertise -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">DOMAIN EXPERTISE</span>
+          <span class="panel-tag">PROFICIENCY MAP</span>
+        </div>
+        <div class="panel-body">
+          <div class="threat-meter">
+            <span class="threat-label">ENDPOINT / EDR</span>
+            <div class="threat-bar-bg"><div class="threat-bar-fill" style="width:93%;background:linear-gradient(90deg,#00d4ff,#00ff9d)"></div></div>
+            <span class="threat-val" style="color:#00ff9d">93</span>
+          </div>
+          <div class="threat-meter">
+            <span class="threat-label">AZURE CLOUD SEC</span>
+            <div class="threat-bar-bg"><div class="threat-bar-fill" style="width:90%;background:linear-gradient(90deg,#00d4ff,#00ff9d)"></div></div>
+            <span class="threat-val" style="color:#00ff9d">90</span>
+          </div>
+          <div class="threat-meter">
+            <span class="threat-label">VULN MANAGEMENT</span>
+            <div class="threat-bar-bg"><div class="threat-bar-fill" style="width:85%;background:linear-gradient(90deg,#00d4ff,#ffd700)"></div></div>
+            <span class="threat-val" style="color:#ffd700">85</span>
+          </div>
+          <div class="threat-meter">
+            <span class="threat-label">THREAT HUNTING</span>
+            <div class="threat-bar-bg"><div class="threat-bar-fill" style="width:87%;background:linear-gradient(90deg,#ff6b35,#ffd700)"></div></div>
+            <span class="threat-val" style="color:#ff6b35">87</span>
+          </div>
+          <div class="threat-meter">
+            <span class="threat-label">NETWORK FORENSICS</span>
+            <div class="threat-bar-bg"><div class="threat-bar-fill" style="width:82%;background:linear-gradient(90deg,#00d4ff,#00ff9d)"></div></div>
+            <span class="threat-val" style="color:#00ff9d">82</span>
+          </div>
+          <div class="threat-meter">
+            <span class="threat-label">PENETRATION TEST</span>
+            <div class="threat-bar-bg"><div class="threat-bar-fill" style="width:75%;background:linear-gradient(90deg,#00d4ff,#ffd700)"></div></div>
+            <span class="threat-val" style="color:#ffd700">75</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tech Stack footer -->
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title">FULL TECH STACK</span>
+        <span class="panel-tag">ALL TOOLS</span>
+      </div>
+      <div class="panel-body" style="display:flex;flex-wrap:wrap;gap:7px;">
+        <span class="tech-tag">MS SENTINEL</span>
+        <span class="tech-tag">KQL</span>
+        <span class="tech-tag">SPLUNK SPL</span>
+        <span class="tech-tag">RSA ENVISION</span>
+        <span class="tech-tag">DEFENDER FOR CLOUD</span>
+        <span class="tech-tag">AZURE AD</span>
+        <span class="tech-tag">AKAMAI WAF/BOT</span>
+        <span class="tech-tag">ZSCALER</span>
+        <span class="tech-tag">FORTIGATE</span>
+        <span class="tech-tag">TENABLE CLOUD</span>
+        <span class="tech-tag">NESSUS</span>
+        <span class="tech-tag">OWASP TOP 10</span>
+        <span class="tech-tag">FORCEPOINT DLP</span>
+        <span class="tech-tag">SOPHOS</span>
+        <span class="tech-tag">MCAFEE EPO</span>
+        <span class="tech-tag">CROWDSTRIKE FALCON</span>
+        <span class="tech-tag">KALI LINUX</span>
+        <span class="tech-tag">BURP SUITE</span>
+        <span class="tech-tag">METASPLOIT</span>
+        <span class="tech-tag">SERVICENOW</span>
+        <span class="tech-tag">WIRESHARK</span>
+        <span class="tech-tag">PYTHON</span>
+        <span class="tech-tag">BASH</span>
+      </div>
+    </div>
+
+  </div><!-- end main -->
+</div>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('liveClock').textContent =
+      now.toISOString().replace('T',' ').substring(0,19) + ' UTC';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
+
+</body>
+</html>
